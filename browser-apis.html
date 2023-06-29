@@ -27,8 +27,40 @@
     <button id="retrieve-web-storage">Retrieve data</button>
 
     <script>
-       // your code goes here
+        // your code goes here
+        // 1. Use the Geolocation API to get and log the current position (latitude and longitude).
+        document.getElementById("geolocate").addEventListener("click", () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    console.log("Latitude:", position.coords.latitude, "Longitude:", position.coords.longitude);
+                });
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        })
 
+
+        // 2. Create a simple audio player with play and stop buttons using the Audio API. Try playing with different audio sources.
+        // I will assume there are elements with ids 'audio', 'play' and 'stop'
+
+        let audio = document.getElementById('audio');
+        audio.src = "audio-file.mp3"; // replace with actual audio file
+
+        document.getElementById('play').addEventListener('click', () => {
+            audio.play();
+        });
+
+        document.getElementById('stop').addEventListener('click', () => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+
+        // 3. Use the Web Storage API to store some data in the user's browser and then retrieve it.
+
+        localStorage.setItem("name", "John Doe");
+
+        const name = localStorage.getItem("name");
+        console.log(name);
     </script>
 </body>
 
